@@ -1,10 +1,19 @@
-#!/Library/Frameworks/Python.framework/Versions/3.10/bin/python3
+#!/usr/bin/python3
 
 import random
 import argparse
 import os
 
-def count(allh, allt, twoh, twot):
+allh=0
+allt=0
+twoh=0
+twot=0
+
+def count():
+    global allh
+    global allt
+    global twoh
+    global twot
     head=0
     # First coin
     if random.random()<=0.35:
@@ -29,35 +38,35 @@ def count(allh, allt, twoh, twot):
 
 if __name__=="__main__":
 # Initialize argparser
-    parser=argparse.ArgumentParser()
-    parser.add_argument("-n", "--trials", help="number of trials for the experiment", default=1)
-    args=parser.parse_args()
-    Ntrials=int(args.trials)
+#    parser=argparse.ArgumentParser()
+#    parser.add_argument("-n", "--trials", help="number of trials for the experiment", default=1)
+#    args=parser.parse_args()
+#    Ntrials=int(args.trials)
+    Ntrials=100
     random.seed(a=None)
     current=0
-    allh=0
-    allt=0
-    twoh=0
-    twot=0
     while current<Ntrials:
-        count(allh, allt, twoh, twot)
+        count()
+        current+=1
 
     # open a file for writing the result
-    result=open('result.txt', w)
-    result.write('Trial No          P(3H)       P(3T)       P(2H1T)         P(1H2T)')
-    result.write("%s    %s      %s      %s      %s"%(Ntrials, allh/Ntrials, allt/Ntrials, twoh/Ntrials, twot/Ntrials))
+    result=open('result.txt', 'w')
+    result.write('Trial No          P(3H)       P(3T)       P(2H1T)         P(1H2T) \n')
+    result.write("%s    %s      %s      %s      %s \n"%(Ntrials, allh/Ntrials, allt/Ntrials, twoh/Ntrials, twot/Ntrials))
 
     # Increase the number of trials by n
     n=5
     while current<Ntrials*n:
-        count(allh, allt, twoh, twot)
-    result.write("%s    %s      %s      %s      %s"%(Ntrials*n, allh/(n*Ntrials), allt/(n*Ntrials), twoh/(n*Ntrials), twot/(n*Ntrials)))
+        count()
+        current+=1
+    result.write("%s    %s      %s      %s      %s \n"%(Ntrials*n, allh/(n*Ntrials), allt/(n*Ntrials), twoh/(n*Ntrials), twot/(n*Ntrials)))
 
     # Increase the number of trials again
     n=10
     while current<Ntrials*n:
-        count(allh, allt, twoh, twot)
-    result.write("%s    %s      %s      %s      %s"%(Ntrials*n, allh/(n*Ntrials), allt/(n*Ntrials), twoh/(n*Ntrials), twot/(n*Ntrials)))
+        count()
+        current+=1
+    result.write("%s    %s      %s      %s      %s \n"%(Ntrials*n, allh/(n*Ntrials), allt/(n*Ntrials), twoh/(n*Ntrials), twot/(n*Ntrials)))
     result.close()
 
 
