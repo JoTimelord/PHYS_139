@@ -38,11 +38,11 @@ def count():
 
 if __name__=="__main__":
 # Initialize argparser
-#    parser=argparse.ArgumentParser()
-#    parser.add_argument("-n", "--trials", help="number of trials for the experiment", default=1)
-#    args=parser.parse_args()
-#    Ntrials=int(args.trials)
-    Ntrials=100
+    parser=argparse.ArgumentParser()
+    parser.add_argument("-n", "--trials", help="number of trials for the experiment", default=100)
+    args=parser.parse_args()
+    Ntrials=int(args.trials)
+
     random.seed(a=None)
     current=0
     while current<Ntrials:
@@ -55,18 +55,13 @@ if __name__=="__main__":
     result.write("%s    %s      %s      %s      %s \n"%(Ntrials, allh/Ntrials, allt/Ntrials, twoh/Ntrials, twot/Ntrials))
 
     # Increase the number of trials by n
-    n=5
-    while current<Ntrials*n:
-        count()
-        current+=1
-    result.write("%s    %s      %s      %s      %s \n"%(Ntrials*n, allh/(n*Ntrials), allt/(n*Ntrials), twoh/(n*Ntrials), twot/(n*Ntrials)))
+    for n in range(2,20):
+        while current<Ntrials*n:
+            count()
+            current+=1
+        result.write("%s    %s      %s      %s      %s \n"%(Ntrials*n, allh/(n*Ntrials), allt/(n*Ntrials), twoh/(n*Ntrials), twot/(n*Ntrials)))
 
-    # Increase the number of trials again
-    n=10
-    while current<Ntrials*n:
-        count()
-        current+=1
-    result.write("%s    %s      %s      %s      %s \n"%(Ntrials*n, allh/(n*Ntrials), allt/(n*Ntrials), twoh/(n*Ntrials), twot/(n*Ntrials)))
+    # close file
     result.close()
 
 
