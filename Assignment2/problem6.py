@@ -15,5 +15,6 @@ print("There are ",A," A bases.")
 print("There are ",G," G bases.")
 print("There are ",T," T bases.")
 print("There are ",C," C bases.")
+print("There are in total ",C+G+A+T," bases.")
 
 
