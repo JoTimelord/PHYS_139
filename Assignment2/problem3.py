@@ -52,18 +52,23 @@ for Ntrial in n:
             VALS=random.choices(sequence,k=Ntrial)
             AVGARR[i]=sum(VALS)/len(VALS)
         counts,bin_edges=np.histogram(AVGARR,bins=100)
+        counts2,bin_edges2=np.histogram(AVGARR,bins=100,density=True)
         probability=counts/float(counts.sum())
         name="N="+str(Ntrial)
         bins=(bin_edges[:-1]+bin_edges[1:])/2
+        bins2=(bin_edges2[:-1]+bin_edges2[1:])/2
 # plot distribution curves
         ax.plot(bins,probability,label=name,c=color[c])
+        #ax.plot(bins2,counts2,label=name,c=color[c])
         c+=1
 
 ax.set_xlabel(r"$X_n$: Average of n samples")
-ax.set_ylabel(r"Probability density")
+ax.set_ylabel(r"Probability mass function")
+#ax.set_ylabel("Probability density function")
 ax.set_title("Central limit theorem")
 ax.legend()
 plt.savefig("CLT.png")
+#plt.savefig("PDF.png")
 
 
 
