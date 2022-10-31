@@ -1,20 +1,19 @@
 #!/usr/bin/python3
 
 import os
-import random
-import numpy as np
-import math
-import matplotlib.pyplot as plt
 
+filename="damagedDNAdata.txt"
+file=open(filename,'r')
+text=file.read()
 
-N=10000
-x=np.linspace(0,1,num=N)
-A=math.factorial(38)/math.factorial(13)/math.factorial(24)
-y=A*np.power(x,13)*np.power(np.subtract(1,x),24)
+A=text.count('A')
+T=text.count('T')
+C=text.count('C')
+G=text.count('G')
 
-fig,ax=plt.subplots()
-ax.plot(x,y)
-ax.set_xlim([0,1])
-ax.set_title("normalized posterior distribution")
-plt.savefig("posterior.png")
+print("There are ",A," A bases.")
+print("There are ",G," G bases.")
+print("There are ",T," T bases.")
+print("There are ",C," C bases.")
+
 
