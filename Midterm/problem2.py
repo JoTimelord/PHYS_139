@@ -4,6 +4,7 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
+import scipy.stats as st
 
 filename="data_2022oct30.txt"
 
@@ -61,7 +62,7 @@ def unit(i):
     return (np.arange(5)==i).astype(int)
 
 hessian=np.zeros(shape=(5,5))
-h=0.001
+h=0.0001
 b0params=np.asarray([fitb1,fitb2,fitb3,fitb4,fitb5])
 for i in range(0,5):
     for j in range(0,5):
@@ -75,24 +76,20 @@ print("The hessian matrix calculated: ")
 print(hessian)
 
 # compute covariance matrix
-cov=np.linalg.inv(0.5*hessian)
+cov=np.linalg.inv(1/2*hessian)
 print("The covariance matrix is ")
 print(cov)
 
-# Part D
+# Part D: Confidence Interval
+print("The 90% confidence interval is ")
+print(st.norm.interval(confidence=0.9,loc=fitb1,scale=cov[0,0]))
+print("The 68% confidence interval is ")
+print(st.norm.interval(confidence=0.68,loc=fitb1,scale=cov[0,0]))
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+print("calculated by scipy package covariance")
+print("The 90% confidence interval is ")
+print(st.norm.interval(confidence=0.9,loc=fitb1,scale=covariance[0,0]))
+print("The 68% confidence interval is ")
+print(st.norm.interval(confidence=0.68,loc=fitb1,scale=covariance[0,0]))
 
 
