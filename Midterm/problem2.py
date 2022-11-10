@@ -91,16 +91,13 @@ print("The covariance matrix is ")
 print(cov)
 
 # Part D: Confidence Interval
-print("The 90% confidence interval is ")
-print(st.norm.interval(confidence=0.9,loc=fitb1,scale=np.sqrt(cov[0,0])))
-print("The 68% confidence interval is ")
-print(st.norm.interval(confidence=0.68,loc=fitb1,scale=np.sqrt(cov[0,0])))
-
-print("calculated by scipy package covariance")
-print("The 90% confidence interval is ")
-print(st.norm.interval(confidence=0.9,loc=fitb1,scale=np.sqrt(covariance[0,0])))
-print("The 68% confidence interval is ")
-print(st.norm.interval(confidence=0.68,loc=fitb1,scale=np.sqrt(covariance[0,0])))
+stringlist=["For b1","For b2","For b3","For b4","For b5"]
+for i in range(0,5):
+    print(stringlist[i])
+    print("The 90% confidence interval is ")
+    print(st.norm.interval(confidence=0.9,loc=b0params[i],scale=np.sqrt(cov[i,i])))
+    print("The 68% confidence interval is ")
+    print(st.norm.interval(confidence=0.68,loc=b0params[i],scale=np.sqrt(cov[i,i])))
 
 # Part E: Contour plot
 def rho(covmatrix,b3,b5):
