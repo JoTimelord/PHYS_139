@@ -1,0 +1,18 @@
+The mean of the sample with size of 100 is:  3.858005424532575
+The variance of the sample is:  3.1265716073473926
+======================Problem 1======================
+______________________Using Bootstrap sampling___________________________
+The average ratio of mean over median is  1.0659494252210748
+The standard error in ratio of mean over median is  0.043317429047680114
+______________________________________________________________________________________
+______________________Using Invisible distribution sampling___________________________
+The average ratio of mean over median is  1.0943697889606734
+The standard error of mean over median is  0.043681289639969534
+======================Problem 2======================
+______________________Using Jackknife sampling___________________________
+The average ratio of mean over median is  1.055253893966224
+The standard error of mean over median is  0.18269654774536837
+______________________________________________________________________________________
+______________________Using Invisible distribution sampling___________________________
+The average ratio of mean over median is  1.0943859292689706
+The standard error of mean over median is  0.04171964033295947

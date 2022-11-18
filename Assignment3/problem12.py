@@ -50,9 +50,31 @@ def partb(n):
     print("The average ratio of mean over median is ",np.average(ratio))
     print("The standard error of mean over median is ",np.std(ratio,ddof=1))    
 
+# jacknife methods which takes in the sample distribution and produce n jackknife samples
+def jacknife(inputdata,n):
+    ratio=np.zeros(n)
+    for i in range(0,n):
+        data=np.delete(inputdata,random.randrange(0,100))
+        median=np.median(data)
+        mean=np.average(data)
+        ratio[i]=mean/median
+    print("The average ratio of mean over median is ",np.average(ratio))
+    print("The standard error of mean over median is ",np.sqrt((np.var(ratio))*(n-1)))  
+
+
 if __name__=="__main__":
+    random.seed(a=None)
     samdata=parta()
+    print("======================Problem 1======================")
     print("______________________Using Bootstrap sampling___________________________")
     bootstrap(samdata,100,200)
+    print("______________________________________________________________________________________")
     print("______________________Using Invisible distribution sampling___________________________")
     partb(100)
+    print("======================Problem 2======================")
+    print("______________________Using Jackknife sampling___________________________")
+    jacknife(samdata,100)
+    print("______________________________________________________________________________________")
+    print("______________________Using Invisible distribution sampling___________________________")
+    partb(100)
+    
