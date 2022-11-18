@@ -27,7 +27,11 @@ def parta():
     random_idx = np.random.choice(np.arange(num_distr), size=(sample_size,), p=coefficients)
     random_idx_invis = np.random.choice(np.arange(num_distr), size=(invisible_size,), p=coefficients)
     sample = data[np.arange(sample_size), random_idx]
+    print("The mean of the sample dataset is ", np.average(sample))
     invisible = datainvis[np.arange(invisible_size), random_idx_invis]
+    print("The mean of the invisible dataset is ", np.average(invisible))
+    print("The median of the invisible dataset is ", np.median(invisible))
+    print("The ratio of mean over median is ", np.average(invisible)/np.median(invisible))
     fig,axs=plt.subplots(nrows=1,ncols=3,figsize=(20,10)) 
     axs[0].hist(sample, bins=sample_size)
     axs[1].hist(invisible, bins=300)
@@ -43,6 +47,7 @@ def parta():
 
 if __name__=="__main__":
     random.seed(a=None)
+    print("Dataset statistics: ")
     samdata=parta()
     print("______________________Using Bootstrap sampling___________________________")
     bootstrap(samdata,100,200)

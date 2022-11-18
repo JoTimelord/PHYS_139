@@ -1,0 +1,11 @@
+Dataset statistics: 
+The mean of the sample dataset is  3.009613627785306
+The mean of the invisible dataset is  3.0907055184311227
+The median of the invisible dataset is  3.5441248280465203
+The ratio of mean over median is  0.8720645204064901
+______________________Using Bootstrap sampling___________________________
+The average ratio of mean over median is  0.9125378294393139
+The standard error in ratio of mean over median is  0.028357878814610667
+______________________Using Jackknife sampling___________________________
+The average ratio of mean over median is  0.9044451607805057
+The standard error of mean over median is  0.051168698814007964
