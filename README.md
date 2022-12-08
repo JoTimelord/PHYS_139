@@ -1,4 +1,3 @@
-# PHYS_139
-PHYS139
+# PHYS 139 
 
-This is for PHYS139 statistical simulations
+The topics covered range from jackknife to metropolis samplings.
