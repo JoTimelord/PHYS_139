@@ -52,6 +52,10 @@ def metropolis(N,init1,init2):
                 x1samples[filled]=x1curr
                 x2samples[filled]=x2curr
                 filled+=1
+            else:
+                x1samples[filled]=x1curr
+                x2samples[filled]=x2curr
+                filled+=1
     return x1samples,x2samples
 
 
@@ -94,13 +98,14 @@ def plot2d():
 
 if __name__=="__main__":
     # plot2d()
-    x1,x2=metropolis(100000,4,4)
-    n = np.linspace(0,100000,num=100000)
-    fig = plt.figure()
-    plt.plot(n,x1)
-    plt.title("Change of x1 over sampling time")
-    plt.ylabel(r'x_1')
-    plt.savefig("x1.png")
+    x1,x2=metropolis(10000,0,0)
+    # n = np.linspace(0,100000,num=100000)
+    # fig = plt.figure()
+    # plt.plot(n,x1)
+    # plt.title("Change of x1 over sampling time")
+    # plt.ylabel(r'x_1')
+    # plt.savefig("x1.png")
+    print ("The mean value of (x1,x2) is ", (np.mean(x1), np.mean(x2)))
     # 3D histogram modified from https://matplotlib.org/stable/gallery/mplot3d/hist3d.html
     fig = plt.figure()
     ax = fig.add_subplot(projection='3d')
